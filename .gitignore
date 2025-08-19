@@ -1,4 +1,4 @@
 .conda
-backend/.env
+.env
 indices
 backend/__pycache__
