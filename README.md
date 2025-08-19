@@ -9,7 +9,7 @@ A production-ready Retrieval-Augmented Generation (RAG) chatbot specializing in 
 - **Real-time Chat Interface**: Clean, professional web interface built with Next.js
 - **Persistent Knowledge Base**: FAISS-powered vector store with automatic index persistence
 - **Conversation Context**: Maintains chat history for contextual responses
-- **RESTful API**: Well-documented FastAPI backend with CORS support
+- **RESTful API**: Well-documented FastAPI backend
 
 ## 🏗️ Architecture
 
@@ -61,8 +61,8 @@ node --version
 
 1. **Clone and Navigate**
 ```bash
-git clone <your-repo>
-cd rag-chatbot/backend
+git clone https://github.com/yannis-gerontopoulos99/RAG_Chatbot
+cd RAG_Chatbot/backend
 ```
 
 2. **Install Dependencies**
@@ -106,6 +106,31 @@ npm install
 npm run dev
 ```
 Frontend will start at `http://localhost:3000`
+
+## Docker Compose Instructions
+
+This project uses Docker Compose to run both the backend (FastAPI) and frontend (Next.js) services.
+
+### 1. Build and start the containers
+
+From the project root (`RAG_Chatbot/`):
+
+```bash
+docker-compose up --build
+```
+
+### 2. Access the services
+
+Backend (FastAPI): http://localhost:8000
+Frontend (Next.js): http://localhost:3000
+
+### 3. Stop the containers
+
+From the project root (`RAG_Chatbot/`):
+
+```bash
+docker-compose stop
+```
 
 ## 📊 RAG Pipeline Deep Dive
 
@@ -297,9 +322,8 @@ RAG_APP/
 ├── backend/
 │   ├── rag_pipeline.py    # Core RAG implementation
 │   ├── main.py            # FastAPI application
-│   ├── run_rag.py         # Run RAG locally
-│   ├── Dockerfile         
-│   └── .env
+│   ├── run_rag.py         # Run RAG locally      
+│   └── Dockerfile
 ├── frontend/
 │   ├── src/
 │   │   └── components/   # React components
@@ -343,7 +367,8 @@ top_k_rerank = 5          # Final context count
 
 ## 🧪 Testing
 
-Testing was done using the relevance score and metadata of each response and comparing to the relevant documents.
+Testing was done using the relevance score and metadata of each response and comparing it to the relevant documents.
+The model sometimes responds to questions that are not relevant to its embedded data.
 
 ### Backend Tests
 ```bash
