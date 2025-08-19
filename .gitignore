@@ -1,0 +1,4 @@
+.conda
+backend/.env
+indices
+backend/__pycache__
